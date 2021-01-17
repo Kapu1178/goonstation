@@ -1146,7 +1146,7 @@
 				var/obj/item/organ/wings/newwings = I
 				newwings.op_stage = op_stage
 				src.wings = newwings
-				newwings.sec_loc(src.donor)
+				newwings.set_loc(src.donor)
 				newwings.holder = src
 				organ_list["wings"] = newwings
 				src.donor.update_body()

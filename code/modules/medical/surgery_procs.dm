@@ -1187,9 +1187,9 @@ var/global/list/chestitem_whitelist = list(/obj/item/gnomechompski, /obj/item/gn
 						return 1
 
 					//if(istype(patient.organHolder.tail, /obj/item/organ/tail/bone) || !patient.organHolder.tail)
-						patient.tri_message("<span class='alert'><b>[surgeon]</b> saws through the skin on the back of [patient == surgeon ? "[his_or_her(patient)]" : "[patient]"] with [src]!</span>",\
-						surgeon, "<span class='alert'>You snip the skin on the back of [surgeon == patient ? "your" : "[patient]"] with [src]!</span>",\
-						patient, "<span class='alert'>[patient == surgeon ? "You snip" : "<b>[surgeon]</b> saws through"] the skin on your back with [src]!</span>")
+					patient.tri_message("<span class='alert'><b>[surgeon]</b> saws through the skin on the back of [patient == surgeon ? "[his_or_her(patient)]" : "[patient]"] with [src]!</span>",\
+					surgeon, "<span class='alert'>You snip the skin on the back of [surgeon == patient ? "your" : "[patient]"] with [src]!</span>",\
+					patient, "<span class='alert'>[patient == surgeon ? "You snip" : "<b>[surgeon]</b> saws through"] the skin on your back with [src]!</span>")
 					/*else
 						patient.tri_message("<span class='alert'><b>[surgeon]</b> saws through the skin along the base of [patient == surgeon ? "[his_or_her(patient)]" : "[patient]'s"] tail with [src]!</span>",\
 						surgeon, "<span class='alert'>You snip the skin along the base of [surgeon == patient ? "your" : "[patient]'s"] tail with [src]!</span>",\
@@ -1211,7 +1211,7 @@ var/global/list/chestitem_whitelist = list(/obj/item/gnomechompski, /obj/item/gn
 						take_bleeding_damage(patient, surgeon, damage_low)
 						return 1
 
-					if(istype(patient.organHolder.wings, /obj/item/organ/wings/bone) || !patient.organHolder.wings)
+					if(istype(patient.organHolder.wings) || !patient.organHolder.wings)
 						patient.tri_message("<span class='alert'><b>[surgeon]</b> opens a hole on [patient == surgeon ? "[his_or_her(patient)]" : "[patient]"] with [src]!</span>",\
 						surgeon, "<span class='alert'>You open a hole on the back of [surgeon == patient ? "your" : "[patient]"] with [src]!</span>",\
 						patient, "<span class='alert'>[patient == surgeon ? "You rip a" : "<b>[surgeon]</b> opens a"] hole through the skin on your back [src]!</span>")
@@ -1270,7 +1270,7 @@ var/global/list/chestitem_whitelist = list(/obj/item/gnomechompski, /obj/item/gn
 						take_bleeding_damage(patient, surgeon, damage_low)
 						return 1
 
-					if(istype(patient.organHolder.wings || !patient.organHolder.wings)
+					if(istype(patient.organHolder.wings) || !patient.organHolder.wings)
 						patient.tri_message("<span class='alert'><b>[surgeon]</b> saws through away the last few connections holding [patient == surgeon ? "[his_or_her(patient)]" : "[patient]'s"] back accessory in place with [src]!</span>",\
 						surgeon, "<span class='alert'>You saw away the last few connections holding [surgeon == patient ? "your" : "[patient]'s"] back accessory in place with [src]!</span>",\
 						patient, "<span class='alert'>[patient == surgeon ? "You saw" : "<b>[surgeon]</b> saws through"] away the last few connections holding your back accessory in place with [src]!</span>")

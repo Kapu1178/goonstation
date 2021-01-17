@@ -917,8 +917,8 @@ var/list/update_body_limbs = list("r_arm" = "stump_arm_right", "l_arm" = "stump_
 					human_wings_image = our_wings.wings_image_1
 					src.wings_standing.overlays += human_wings_image
 
-					human_wings_image = our_tail.wings_image_oversuit
-					src.wings_standing_oversuit.overlays += human_tail_image
+					human_wings_image = our_wings.wings_image_oversuit
+					src.wings_standing_oversuit.overlays += human_wings_image
 				else
 					UpdateOverlays(null, "wings")
 					UpdateOverlays(null, "wings_oversuit")
@@ -1219,7 +1219,8 @@ var/list/update_body_limbs = list("r_arm" = "stump_arm_right", "l_arm" = "stump_
 	src.UpdateOverlays(src.tail_standing, "tail", 1, 1) // i blame pali for giving me this power
 	src.UpdateOverlays(src.tail_standing_oversuit, "tail_oversuit", 1, 1)
 	src.UpdateOverlays(src.detail_standing_oversuit, "detail_oversuit", 1, 1)
-	src.UpdateOverlays(src.wings_standing, )
+	src.UpdateOverlays(src.wings_standing, "wings", 1, 1)
+	src.UpdateOverlays(src.wings_standing_oversuit, "wings_oversuit", 1, 1)
 
 /mob/living/carbon/human/tdummy/UpdateDamage()
 	var/prev = health

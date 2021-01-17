@@ -40,6 +40,8 @@
 	var/image/tail_standing_oversuit = null
 	var/image/detail_standing_oversuit = null
 	var/image/fire_standing = null
+	var/image/wings_standing = null
+	var/image/wings_standing_oversuit = null
 	//var/image/face_standing = null
 	var/image/hands_standing = null
 	var/list/inhands_standing = list()
@@ -125,6 +127,7 @@
 	var/static/image/human_head_image = image('icons/mob/human_head.dmi')
 	var/static/image/human_detail_image = image('icons/mob/human.dmi', layer = MOB_OVERSUIT_LAYER2)
 	var/static/image/human_tail_image = image('icons/mob/human.dmi')
+	var/static/image/human_wings_image = image('icons/mob/human.dmi')
 	var/static/image/human_hair_image = image('icons/mob/human_hair.dmi')
 	var/static/image/human_untoned_image = image('icons/mob/human.dmi')
 	var/static/image/human_decomp_image = image('icons/mob/human_decomp.dmi')
