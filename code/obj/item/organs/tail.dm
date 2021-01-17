@@ -80,7 +80,7 @@
 				user, "<span class='alert'>You [fluff] [src] onto the apex of [H == user ? "your" : "[H]'s"] sacrum!</span>",\
 				H, "<span class='alert'>[H == user ? "You" : "<b>[user]</b>"] [fluff][H == user && fluff == "press" ? "es" : "s"] [src] onto the apex of your sacrum!</span>")
 
-		else if (!H.organHolder.tail && H.organHolder.chest.op_stage >= 11.0 && src.can_attach_organ(H, user))
+		else if (!H.organHolder.tail && H.organHolder.chest.op_stage == 11.0 && src.can_attach_organ(H, user))
 			attachment_successful = 1
 
 			var/fluff = pick("insert", "shove", "place", "drop", "smoosh", "squish")

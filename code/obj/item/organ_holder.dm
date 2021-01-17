@@ -23,6 +23,7 @@
 	var/obj/item/organ/intestines = null
 	var/obj/item/organ/appendix = null
 	var/obj/item/organ/tail = null
+	var/obj/item/organ/wings = null
 	var/lungs_changed = 2				//for changing lung stamina debuffs if it has changed since last cycle. starts at 2 for having 2 working lungs
 
 	var/list/organ_list = list("all", "head", "skull", "brain", "left_eye", "right_eye", "chest", "heart", "left_lung", "right_lung", "butt", "left_kidney", "right_kidney", "liver", "stomach", "intestines", "spleen", "pancreas", "appendix")
@@ -46,7 +47,8 @@
 		"intestines"="/obj/item/organ/intestines",
 		"appendix"="/obj/item/organ/appendix",
 		"butt"="/obj/item/clothing/head/butt",
-		"tail"="/obj/item/organ/tail")
+		"tail"="/obj/item/organ/tail",
+		"wings" = "obj/item/organ/tail")
 
 	New(var/mob/living/L, var/ling)
 		..()
@@ -121,6 +123,11 @@
 			tail.donor = null
 			tail.holder = null
 
+		if (wings)
+			wings.donor = null
+			wings.holder = null
+
+
 		head = null
 		skull = null
 		brain = null
@@ -140,6 +147,7 @@
 		pancreas = null
 		appendix = null
 		tail = null
+		wings = null
 
 		donor = null
 		..()
@@ -345,6 +353,9 @@
 		if (!src.tail)
 			src.tail = null	// Humans dont have tailbones, fun fact
 			organ_list["tail"] = tail
+		if (!src.wings)
+			src.wings = null //please god work
+			organ_list["wings"] = wings
 
 	//input organ = string value of organ_list assoc list
 	proc/get_organ(var/organ)
@@ -403,6 +414,8 @@
 				organ = "appendix"
 			else if(organ == tail)
 				organ = "tail"
+			else if(organ == wings)
+				organ = "wings"
 			else
 				return 0 // what the fuck are you trying to remove
 
@@ -712,6 +725,19 @@
 				src.donor.update_body()
 				src.organ_list["tail"] = null
 				return mytail
+
+			if ("wings")
+				if (!src.wings)
+					return 0
+				var/obj/item/organs/wings/mywings = src.wings
+				mywings.set_loc(location)
+				mywings.on_removal()
+				mywings.holder = null
+				src.wings = null
+				src.donor.update_body()
+				src.organ_list["wings"] = null
+				return mywings
+
 
 	/// drops the organ, then hurls it somewhere
 	proc/drop_and_throw_organ(var/organ, var/location, var/direction, var/vigor, var/showtext)
@@ -1108,6 +1134,21 @@
 				newtail.set_loc(src.donor)
 				newtail.holder = src
 				organ_list["tail"] = newtail
+				src.donor.update_body()
+				success = 1
+
+			if ("wings")
+				if (src.wings)
+					if (force)
+						qdel(src.wings)
+					else
+						return 0
+				var/obj/item/organ/wings/newwings = I
+				newwings.op_stage = op_stage
+				src.wings = newwings
+				newwings.sec_loc(src.donor)
+				newwings.holder = src
+				organ_list["wings"] = newwings
 				src.donor.update_body()
 				success = 1
 

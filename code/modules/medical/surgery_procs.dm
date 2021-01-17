@@ -1186,15 +1186,15 @@ var/global/list/chestitem_whitelist = list(/obj/item/gnomechompski, /obj/item/gn
 						take_bleeding_damage(patient, surgeon, damage_low)
 						return 1
 
-					if(istype(patient.organHolder.tail, /obj/item/organ/tail/bone) || !patient.organHolder.tail)
-						patient.tri_message("<span class='alert'><b>[surgeon]</b> saws through the skin across the top of [patient == surgeon ? "[his_or_her(patient)]" : "[patient]'s"] butt with [src]!</span>",\
-						surgeon, "<span class='alert'>You snip the skin across the top of [surgeon == patient ? "your" : "[patient]'s"] butt with [src]!</span>",\
-						patient, "<span class='alert'>[patient == surgeon ? "You snip" : "<b>[surgeon]</b> saws through"] the skin across the top of your butt with [src]!</span>")
-					else
+					//if(istype(patient.organHolder.tail, /obj/item/organ/tail/bone) || !patient.organHolder.tail)
+						patient.tri_message("<span class='alert'><b>[surgeon]</b> saws through the skin on the back of [patient == surgeon ? "[his_or_her(patient)]" : "[patient]"] with [src]!</span>",\
+						surgeon, "<span class='alert'>You snip the skin on the back of [surgeon == patient ? "your" : "[patient]"] with [src]!</span>",\
+						patient, "<span class='alert'>[patient == surgeon ? "You snip" : "<b>[surgeon]</b> saws through"] the skin on your back with [src]!</span>")
+					/*else
 						patient.tri_message("<span class='alert'><b>[surgeon]</b> saws through the skin along the base of [patient == surgeon ? "[his_or_her(patient)]" : "[patient]'s"] tail with [src]!</span>",\
 						surgeon, "<span class='alert'>You snip the skin along the base of [surgeon == patient ? "your" : "[patient]'s"] tail with [src]!</span>",\
 						patient, "<span class='alert'>[patient == surgeon ? "You snip" : "<b>[surgeon]</b> saws through"] the skin along the base of your tail with [src]!</span>")
-
+*/
 					patient.TakeDamage("chest", damage_low, 0)
 					if (!surgeon.find_type_in_hand(/obj/item/hemostat))
 						take_bleeding_damage(patient, surgeon, damage_low)
@@ -1202,6 +1202,37 @@ var/global/list/chestitem_whitelist = list(/obj/item/gnomechompski, /obj/item/gn
 						surgeon.show_text("You clamp the bleeders with the hemostat.", "blue")
 					patient.organHolder.chest.op_stage = 10.0
 					return 1
+
+				if(10.0) //Wings
+					playsound(get_turf(patient), "sound/impact_sounds/Slimy_Cut_1.ogg", 50, 1)
+					if(prob(screw_up_prob))
+						surgeon.visible_message("<span class='alert'><b>[surgeon][fluff]!</b></span>")
+						patient.TakeDamage("chest", damage_low, 0)
+						take_bleeding_damage(patient, surgeon, damage_low)
+						return 1
+
+					if(istype(patient.organHolder.wings, /obj/item/organ/wings/bone) || !patient.organHolder.wings)
+						patient.tri_message("<span class='alert'><b>[surgeon]</b> opens a hole on [patient == surgeon ? "[his_or_her(patient)]" : "[patient]"] with [src]!</span>",\
+						surgeon, "<span class='alert'>You open a hole on the back of [surgeon == patient ? "your" : "[patient]"] with [src]!</span>",\
+						patient, "<span class='alert'>[patient == surgeon ? "You rip a" : "<b>[surgeon]</b> opens a"] hole through the skin on your back [src]!</span>")
+						patient.TakeDamage("chest", damage_low, 0)
+
+						if (!surgeon.find_type_in_hand(/obj/item/hemostat))
+							take_bleeding_damage(patient, surgeon, damage_low)
+						else
+							surgeon.show_text("You clamp the bleeders with the hemostat.", "blue")
+						patient.organHolder.chest.op_stage = 12.0 //advance to last wing stage
+						return 1
+
+					else //If they dont have wings, deal damage to them and do not progress op_stage
+						patient.tri_message("<span class='alert'><b>[surgeon]</b> gouges [patient == surgeon ? "[his_or_her(patient)]" : "[patient]'s "] back with [src]!</span>",\
+						surgeon, "<span class='alert'>You gouge [surgeon == patient ? "your" : "[patient]'s"] back with [src]!</span>",\
+						patient, "<span class='alert'>[patient == surgeon ? "You gouge" : "<b>[surgeon]</b> gouges"] your back with [src]!</span>")
+						patient.TakeDamage("chest", damage_low, 0)
+						take_bleeding_damage(patient, surgeon, damage_low)
+						return 1
+
+
 
 				if(11.0)	// Last of tail!
 					playsound(get_turf(patient), "sound/impact_sounds/Slimy_Cut_1.ogg", 50, 1)
@@ -1230,6 +1261,30 @@ var/global/list/chestitem_whitelist = list(/obj/item/gnomechompski, /obj/item/gn
 						logTheThing("combat", surgeon, patient, "removed [constructTarget(patient,"combat")]'s tail with [src].")
 					patient.organHolder.drop_organ("tail")
 					return 1
+
+				if (12.0) //last of wings!
+					playsound(get_turf(patient), "sound/impact_sounds/Slimy_Cut_1.ogg", 50, 1)
+					if(prob(screw_up_prob))
+						surgeon.visible_message("<span class='alert'><b>[surgeon][fluff]!</b></span>")
+						patient.TakeDamage("chest", damage_low, 0)
+						take_bleeding_damage(patient, surgeon, damage_low)
+						return 1
+
+					if(istype(patient.organHolder.wings || !patient.organHolder.wings)
+						patient.tri_message("<span class='alert'><b>[surgeon]</b> saws through away the last few connections holding [patient == surgeon ? "[his_or_her(patient)]" : "[patient]'s"] back accessory in place with [src]!</span>",\
+						surgeon, "<span class='alert'>You saw away the last few connections holding [surgeon == patient ? "your" : "[patient]'s"] back accessory in place with [src]!</span>",\
+						patient, "<span class='alert'>[patient == surgeon ? "You saw" : "<b>[surgeon]</b> saws through"] away the last few connections holding your back accessory in place with [src]!</span>")
+
+					patient.TakeDamage("chest", damage_low, 0)
+					if (!surgeon.find_type_in_hand(/obj/item/hemostat))
+						take_bleeding_damage(patient, surgeon, damage_low)
+					else
+						surgeon.show_text("You clamp the bleeders with the hemostat.", "blue")
+					if (patient.organHolder.wings)
+						logTheThing("combat", surgeon, patient, "removed [constructTarget(patient,"combat")]'s back accessory with [src].")
+					patient.organHolder.drop_organ("wings")
+					return 1
+
 
 				if (1.0)
 					playsound(get_turf(patient), "sound/impact_sounds/Slimy_Cut_1.ogg", 50, 1)

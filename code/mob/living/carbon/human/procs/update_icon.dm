@@ -821,6 +821,11 @@ var/list/update_body_limbs = list("r_arm" = "stump_arm_right", "l_arm" = "stump_
 		src.detail_standing_oversuit = SafeGetOverlayImage("detail_oversuit", 'icons/mob/human.dmi', "blank", MOB_OVERSUIT_LAYER2)
 		src.detail_standing_oversuit.overlays.len = 0
 
+		src.wings_standing = SafeGetOverlayImage("wings", 'icons/mob/human.dmi', "blank", MOB_WINGS_LAYER)
+		src.wings_standing.overlays.len = 0
+		src.wings_standing_oversuit = SafeGetOverlayImage("wings_oversuit", 'icons/mob/human.dmi', "blank", MOB_OVERSUIT_LAYER1)
+		src.wings_standing_oversuit.overlays.len = 0
+
 		var/eye_offset = AHOLD.e_offset_y // Monkey need human eyes to see good
 		var/body_offset = AHOLD.mob_body_offset // Monkey need human arms to hug good
 		var/leg_offset = AHOLD.mob_leg_offset
@@ -906,6 +911,18 @@ var/list/update_body_limbs = list("r_arm" = "stump_arm_right", "l_arm" = "stump_
 				else
 					UpdateOverlays(null, "tail")
 					UpdateOverlays(null, "tail_oversuit")
+
+				if(src.organHolder?.wings)
+					var/obj/item/organ/wings/our_wings = src.organHolder.wings
+					human_wings_image = our_wings.wings_image_1
+					src.wings_standing.overlays += human_wings_image
+
+					human_wings_image = our_tail.wings_image_oversuit
+					src.wings_standing_oversuit.overlays += human_tail_image
+				else
+					UpdateOverlays(null, "wings")
+					UpdateOverlays(null, "wings_oversuit")
+
 
 			else
 				human_decomp_image.icon_state = "body_decomp[src.decomp_stage]"
@@ -1202,7 +1219,7 @@ var/list/update_body_limbs = list("r_arm" = "stump_arm_right", "l_arm" = "stump_
 	src.UpdateOverlays(src.tail_standing, "tail", 1, 1) // i blame pali for giving me this power
 	src.UpdateOverlays(src.tail_standing_oversuit, "tail_oversuit", 1, 1)
 	src.UpdateOverlays(src.detail_standing_oversuit, "detail_oversuit", 1, 1)
-
+	src.UpdateOverlays(src.wings_standing, )
 
 /mob/living/carbon/human/tdummy/UpdateDamage()
 	var/prev = health
