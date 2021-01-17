@@ -43,7 +43,8 @@
 #define MOB_LIMB_LAYER 		(MOB_OVERLAY_BASE-21)
 #define MOB_TAIL_LAYER2 		(MOB_OVERLAY_BASE-23) // Tail detail
 #define MOB_TAIL_LAYER1 		(MOB_OVERLAY_BASE-24) // Tail base
-#define MOB_WINGS_LAYER			(MOB_OVERLAY_BASE-25) //Back accessories
+#define MOB_WINGS_LAYER1			(MOB_OVERLAY_BASE-25) //Back accessories
+#define MOB_WINGS_LAYER2			(MOB_OVERLAY_BASE-26)//UHHHHHHHHHH
 
 // Some effects were defined on layer 10, some on layer 20... Lets unify this...
 // These are for effects that should display below lighting

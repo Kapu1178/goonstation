@@ -2061,12 +2061,12 @@
 	mutant_organs = list("wings" = /obj/item/organ/wings/moth)
 	special_hair_1_icon = 'icons/mob/moth.dmi'
 	special_hair_1_state = "head-detail1"
-	special_hair_1_color = null
+	special_hair_1_color = CUST_1
 	r_limb_arm_type_mutantrace = /obj/item/parts/human_parts/arm/mutant/moth/right
 	l_limb_arm_type_mutantrace = /obj/item/parts/human_parts/arm/mutant/moth/left
 	r_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/moth/right
 	l_limb_leg_type_mutantrace = /obj/item/parts/human_parts/leg/mutant/moth/left
-	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_EYES | HAS_NO_SKINTONE | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS | HAS_SPECIAL_HAIR)
+	mutant_appearance_flags = (NOT_DIMORPHIC | HAS_NO_EYES | HAS_NO_SKINTONE | BUILT_FROM_PIECES | HEAD_HAS_OWN_COLORS | HAS_SPECIAL_HAIR | HAS_EXTRA_DETAILS)
 
 	say_verb()
 		return "flutters"

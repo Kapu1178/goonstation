@@ -5,12 +5,12 @@
 	organ_holder_location = "chest" //(back)
 	organ_holder_required_op_stage = 12.0 //i've transcended mortality. I comprehend op_stage code. God bless america.
 	edible = 1
-	organ_image_icon = 'icons/mob/moth.dmi' //FUUUUUUUUUUUUCK
-	icon_state = "wings-moth" //FUUUUUUUUUCK
+	organ_image_icon = 'icons/mob/moth.dmi'
+	icon_state = "wings-moth"
 	made_from = "flesh"
 	var/wings_num = WINGS_MOTH
 
-	var/image/wings_image_1
+	var/image/wings_image_1 //extra shit?
 	var/image/wings_image_oversuit
 
 
@@ -42,5 +42,5 @@
 	desc = "soft and fluffy wings"
 	icon_state = "wings-moth"
 	wings_num = WINGS_MOTH
-	wings_image_oversuit = "moth_over_suit"
-	wings_image_1 = "moth_under_suit"
+	//wings_image_oversuit = image(icon=organ_image_icon, icon_state=moth_over_suit, layer = MOB_WINGS_LAYER1)
+	//wings_image_1 = image(icon=organ_image_icon, icon_state=moth_under_suit, layer = MOB_OVERSUIT_LAYER1)

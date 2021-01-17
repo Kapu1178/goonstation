@@ -821,7 +821,7 @@ var/list/update_body_limbs = list("r_arm" = "stump_arm_right", "l_arm" = "stump_
 		src.detail_standing_oversuit = SafeGetOverlayImage("detail_oversuit", 'icons/mob/human.dmi', "blank", MOB_OVERSUIT_LAYER2)
 		src.detail_standing_oversuit.overlays.len = 0
 
-		src.wings_standing = SafeGetOverlayImage("wings", 'icons/mob/human.dmi', "blank", MOB_WINGS_LAYER)
+		src.wings_standing = SafeGetOverlayImage("wings", 'icons/mob/human.dmi', "blank", MOB_WINGS_LAYER1)
 		src.wings_standing.overlays.len = 0
 		src.wings_standing_oversuit = SafeGetOverlayImage("wings_oversuit", 'icons/mob/human.dmi', "blank", MOB_OVERSUIT_LAYER1)
 		src.wings_standing_oversuit.overlays.len = 0

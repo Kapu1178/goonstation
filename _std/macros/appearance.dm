@@ -26,6 +26,7 @@
 #define TAIL_SEAMONKEY 6
 #define TAIL_CAT 7
 #define TAIL_ROACH 8
+#define TAIL_MOTH 9
 
 //wing defines (FUUUUUUUCK)
 #define WINGS_NONE 0
