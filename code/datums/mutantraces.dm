@@ -2058,6 +2058,7 @@
 	race_mutation = /datum/bioEffect/mutantrace/moth
 	mutant_folder = 'icons/mob/moth.dmi'
 	special_head = HEAD_MOTH
+	mutant_organs = list("wings" = /obj/item/organ/wings/moth)
 	special_hair_1_icon = 'icons/mob/moth.dmi'
 	special_hair_1_state = "head-detail1"
 	special_hair_1_color = null

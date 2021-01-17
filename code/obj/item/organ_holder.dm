@@ -729,7 +729,7 @@
 			if ("wings")
 				if (!src.wings)
 					return 0
-				var/obj/item/organs/wings/mywings = src.wings
+				var/obj/item/organ/wings/mywings = src.wings
 				mywings.set_loc(location)
 				mywings.on_removal()
 				mywings.holder = null

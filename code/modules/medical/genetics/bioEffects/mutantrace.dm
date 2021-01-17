@@ -191,4 +191,4 @@
 	mutantrace_path = /datum/mutantrace/moth
 	msgGain = "You feel a sudden strange attraction to the station's lighting."
 	msgLose = "You feel less furry."
-	icon_state  = "cat"
+	icon_state  = "moth"
